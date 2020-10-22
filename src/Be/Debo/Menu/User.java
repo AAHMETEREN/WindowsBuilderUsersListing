@@ -7,7 +7,7 @@ public class User {
 	private String Nom;
 	private String Prenom;
 	private String Sexe;
-	private DAO_USERS db;
+	private IDAO_USERS db;
 	
 	public String getNom() {
 		return this.Nom;
