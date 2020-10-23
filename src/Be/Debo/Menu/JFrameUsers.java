@@ -43,21 +43,21 @@ public class JFrameUsers extends JFrame {
 	 * Create the frame.
 	 */
 	public JFrameUsers() {
-		JFrameUsers self = this;
-		
-		users = new User();
+		users = new User(new DAO_USERS());
 		List<User> allUsers = users.getUsers();
+		JList list = new JList(allUsers.toArray());
+		
+		// Liste d'utilisateur
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 389, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.X_AXIS));
-		
-		JList list = new JList(allUsers.toArray());
-		
 		contentPane.add(list);
 		
+		JFrameUsers self = this;
+		// Bouton retour
 		JButton btnNewButton = new JButton("Retour");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

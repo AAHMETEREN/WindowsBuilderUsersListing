@@ -23,11 +23,10 @@ public class User {
 		this.Nom = Nom;
 		this.Prenom = Prenom;
 		this.Sexe = Sexe;
-		this.db = DAO_USERS.getInstance();
 	}
 	
-	public User (){
-		this.db = DAO_USERS.getInstance();
+	public User (IDAO_USERS db){
+		this.db = db;
 	}
 	
 	public  List<User> getUsers(){

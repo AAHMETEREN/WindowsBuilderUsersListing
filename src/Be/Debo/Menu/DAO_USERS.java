@@ -8,12 +8,13 @@ import javax.swing.JOptionPane;
 
 public class DAO_USERS implements IDAO_USERS {
 	
-	private static DAO_USERS singleton = null;
+	private static DAO_USERS instance = null;
 	private Connection db;
 	private Statement stmt;
 	
 	
 	public  DAO_USERS() {
+		// Init of the database
 		try
 		{
 			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
@@ -28,20 +29,13 @@ public class DAO_USERS implements IDAO_USERS {
 		}
 	}
 	
-	public static DAO_USERS getInstance() {
-		if(singleton == null) {
-			singleton = new DAO_USERS();
-		}
-		return singleton;
-	}
-	
 	public List<User> getUsers() throws SQLException {
+		// Getting the list of the users
+		System.out.println("GETTING USERS");
 		List<User> Users = new ArrayList<User>();
-		ResultSet res;
 		try {
 			String query  = "SELECT Nom,Prenom,Sexe from Utilisateur";
-			System.out.println("GETTING USERS");
-			res = this.stmt.executeQuery(query);
+			ResultSet res = this.stmt.executeQuery(query);
 			while(res.next()) {
 				User user = new User(res.getString(1) , res.getString(2) , res.getString(3));
 				Users.add(user);
@@ -49,7 +43,6 @@ public class DAO_USERS implements IDAO_USERS {
 			return Users;
 		}catch(SQLException err) {
 			System.out.println(err.getMessage());
-
 			return null;
 		}
 		
