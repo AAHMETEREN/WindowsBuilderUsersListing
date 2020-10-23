@@ -8,7 +8,6 @@ import javax.swing.JOptionPane;
 
 public class DAO_USERS implements IDAO_USERS {
 	
-	private static DAO_USERS instance = null;
 	private Connection db;
 	private Statement stmt;
 	
